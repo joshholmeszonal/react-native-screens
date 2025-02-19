@@ -51,7 +51,8 @@
     "react-native.config.js",
     "README.md",
     "!**/__tests__",
-    "!android/src/main/java/com/swmansion/rnscreens/LifecycleHelper.kt"
+    "!android/src/main/java/com/swmansion/rnscreens/LifecycleHelper.kt",
+    "windows"
   ],
   "repository": {
     "type": "git",
@@ -112,7 +113,7 @@
     "react-native-gesture-handler": "^2.22.0",
     "react-native-reanimated": "3.16.7",
     "react-native-safe-area-context": "5.1.0",
-    "react-native-windows": "^0.64.8",
+    "react-native-windows": "^0.77.0",
     "react-test-renderer": "^18.2.0",
     "release-it": "^15.6.0",
     "typescript": "5.4.3"
@@ -169,7 +170,19 @@
         "RNSScreenStack": "RNSScreenStackView",
         "RNSSearchBar": "RNSSearchBar"
       }
+    },
+    "windows": {
+      "namespace": "RNScreensCodegen",
+      "outputDirectory": "windows/RNScreens/codegen",
+      "separateDataTypes": true
     }
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.1.1",
+  "react-native-windows": {
+    "init-windows": {
+      "name": "RNScreens",
+      "namespace": "RNScreens",
+      "template": "cpp-lib"
+    }
+  }
 }

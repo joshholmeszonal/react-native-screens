@@ -13,7 +13,9 @@
     "build-e2e-android": "detox build --configuration android.release",
     "test-e2e-ios": "detox test --configuration ios.release --take-screenshots failing",
     "test-e2e-android": "detox test --configuration android.release --take-screenshots failing",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "windows": "npx @react-native-community/cli run-windows",
+    "test:windows": "jest --config jest.config.windows.js"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "link:../react-navigation/packages/bottom-tabs/",
@@ -32,7 +34,8 @@
     "react-native-reanimated": "3.16.7",
     "react-native-restart": "^0.0.27",
     "react-native-safe-area-context": "5.1.0",
-    "react-native-screens": "link:../"
+    "react-native-screens": "link:../",
+    "react-native-windows": "0.77.2"
   },
   "resolutions": {
     "@react-navigation/core": "link:../react-navigation/packages/core/"
@@ -61,9 +64,17 @@
     "react-native-codegen": "^0.71.3",
     "react-test-renderer": "18.3.1",
     "ts-jest": "^29.0.3",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "@rnx-kit/jest-preset": "^0.1.17"
   },
   "engines": {
     "node": ">=18"
+  },
+  "react-native-windows": {
+    "init-windows": {
+      "name": "RNScreensExample",
+      "namespace": "RNScreensExample",
+      "template": "cpp-app"
+    }
   }
 }
