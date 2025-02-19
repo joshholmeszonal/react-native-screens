@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "ReactNativeScreensExample.Package", "ReactNativeScreensExample.Package\ReactNativeScreensExample.Package.wapproj", "{C210BED8-AD3C-4A26-8309-314C26B39F7B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReactNativeScreensExample", "ReactNativeScreensExample\ReactNativeScreensExample.vcxproj", "{8339DD4D-71AD-44AA-8C04-4A1107AD5825}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Debug|ARM64 = Debug|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		Release|ARM64 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|x64.ActiveCfg = Debug|x64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|x64.Build.0 = Debug|x64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|x64.Deploy.0 = Debug|x64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|x86.ActiveCfg = Debug|x86
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|x86.Build.0 = Debug|x86
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|x86.Deploy.0 = Debug|x86
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|ARM64.Build.0 = Debug|ARM64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|x64.ActiveCfg = Release|x64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|x64.Build.0 = Release|x64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|x64.Deploy.0 = Release|x64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|x86.ActiveCfg = Release|x86
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|x86.Build.0 = Release|x86
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|x86.Deploy.0 = Release|x86
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|ARM64.ActiveCfg = Release|ARM64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|ARM64.Build.0 = Release|ARM64
+		{C210BED8-AD3C-4A26-8309-314C26B39F7B}.Release|ARM64.Deploy.0 = Release|ARM64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|x64.ActiveCfg = Debug|x64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|x64.Build.0 = Debug|x64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|x64.Deploy.0 = Debug|x64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|x86.ActiveCfg = Debug|Win32
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|x86.Build.0 = Debug|Win32
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|x86.Deploy.0 = Debug|Win32
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|ARM64.Build.0 = Debug|ARM64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|x64.ActiveCfg = Release|x64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|x64.Build.0 = Release|x64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|x64.Deploy.0 = Release|x64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|x86.ActiveCfg = Release|Win32
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|x86.Build.0 = Release|Win32
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|x86.Deploy.0 = Release|Win32
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|ARM64.ActiveCfg = Release|ARM64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|ARM64.Build.0 = Release|ARM64
+		{8339DD4D-71AD-44AA-8C04-4A1107AD5825}.Release|ARM64.Deploy.0 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D43FAD39-F619-437D-BB40-04A3982ACB6A}
+	EndGlobalSection
+EndGlobal

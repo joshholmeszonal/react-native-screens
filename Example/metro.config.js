@@ -1,104 +1,57 @@
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('@react-native/metro-config').MetroConfig}
- */
-
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
-
 const fs = require('fs');
 const path = require('path');
-const exclusionList = require('metro-config/src/defaults/exclusionList');
 const escape = require('escape-string-regexp');
-
+const exclusionList = require('metro-config/src/defaults/exclusionList');
 const pack = require('../package.json');
-const projectPack = require('./package.json');
 
-// react-native-screens root directory
-const rnsRoot = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '..');
+const modules = Object.keys({ ...pack.peerDependencies });
 
-const modules = [
-  '@react-navigation/native',
-  'react-native-reanimated',
-  'react-native-safe-area-context',
-  'react-native-gesture-handler',
-  ...Object.keys(pack.peerDependencies),
-];
+const rnwPath = fs.realpathSync(
+  path.resolve(require.resolve('react-native-windows/package.json'), '..'),
+);
 
-const resolvedExts = ['.ts', '.tsx', '.js', '.jsx'];
+//
 
-const projectNodeModules = path.join(__dirname, 'node_modules');
-
+/**
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
 const config = {
-  projectRoot: __dirname,
-  watchFolders: [rnsRoot],
+  watchFolders: [root,
+    //
+  ],
 
   // We need to make sure that only one version is loaded for peerDependencies
-  // So we exclude them at the root, and alias them to the versions in example's node_modules
+  // So we block them at the root, and alias them to the versions in example's node_modules
   resolver: {
-    sourceExts: ['ts', 'tsx', 'js', 'jsx', 'json'],
-    blockList: exclusionList(
+    blacklistRE: exclusionList(
       modules.map(
-        m =>
-          new RegExp(`^${escape(path.join(rnsRoot, 'node_modules', m))}\\/.*$`),
-      ),
+        (m) =>
+          new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`)
+      ).concat([
+        // This stops "npx @react-native-community/cli run-windows" from causing the metro server to crash if its already running
+        new RegExp(
+          `${path.resolve(__dirname, 'windows').replace(/[/\\]/g, '/')}.*`,
+        ),
+        // This prevents "npx @react-native-community/cli run-windows" from hitting: EBUSY: resource busy or locked, open msbuild.ProjectImports.zip or other files produced by msbuild
+        new RegExp(`${rnwPath}/build/.*`),
+        new RegExp(`${rnwPath}/target/.*`),
+        /.*\.ProjectImports\.zip/,
+      ])
     ),
 
     extraNodeModules: modules.reduce((acc, name) => {
       acc[name] = path.join(__dirname, 'node_modules', name);
       return acc;
-    }, {}),
-
-    nodeModulesPaths: [projectNodeModules, path.join(__dirname, '../../')],
-
-    // Since we use react-navigation as submodule it comes with it's own node_modules. While loading
-    // react-navigation code, due to how module resolution algorithms works it seems that its node_modules
-    // are consulted first, resulting in double-loaded packages (so doubled react, react-native and other package instances) leading
-    // to various errors. To mitigate this we define below custom request resolver, hijacking requests to conflicting modules and manually
-    // resolving appropriate files. **Most likely** this can be achieved by proper usage of blockList but I found this method working ¯\_(ツ)_/¯
-    resolveRequest: (context, moduleName, platform) => {
-      if (moduleName === 'react-native-screens') {
-        return {
-          filePath: path.join(rnsRoot, 'src', 'index.tsx'),
-          type: 'sourceFile',
-        };
-      }
-
-      if (moduleName in projectPack.dependencies) {
-        for (const ext of resolvedExts) {
-          const possiblePath = path.join(
-            __dirname,
-            'node_modules',
-            moduleName,
-            `index${ext}`,
-          );
-
-          const possibleSrcPath = path.join(
-            __dirname,
-            'node_modules',
-            moduleName,
-            'src',
-            `index${ext}`,
-          );
-
-          if (fs.existsSync(possiblePath)) {
-            return {
-              filePath: possiblePath,
-              type: 'sourceFile',
-            };
-          } else if (fs.existsSync(possibleSrcPath)) {
-            return {
-              filePath: possibleSrcPath,
-              type: 'sourceFile',
-            };
-          }
-        }
-      }
-
-      // Optionally, chain to the standard Metro resolver.
-      return context.resolveRequest(context, moduleName, platform);
     },
+    {
+      //
+    }
+    ),
   },
 
   transformer: {
